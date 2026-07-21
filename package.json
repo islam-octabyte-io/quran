@@ -1,0 +1,16 @@
+{
+  "name": "quran",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "pnpm@10.33.2",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "pnpm -r --parallel dev",
+    "dev:backend": "pnpm --filter @quran/backend start:dev",
+    "dev:frontend": "pnpm --filter @quran/frontend dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint"
+  }
+}

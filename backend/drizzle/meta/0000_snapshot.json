@@ -1,0 +1,974 @@
+{
+  "id": "0d434041-ec48-40f5-8ff2-29b14d0eebd8",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.ayahs": {
+      "name": "ayahs",
+      "schema": "",
+      "columns": {
+        "uci": {
+          "name": "uci",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "number": {
+          "name": "number",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "surah_uci": {
+          "name": "surah_uci",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "number_in_surah": {
+          "name": "number_in_surah",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sajda": {
+          "name": "sajda",
+          "type": "sajda_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "juz_uci": {
+          "name": "juz_uci",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "hizb_uci": {
+          "name": "hizb_uci",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "rub_uci": {
+          "name": "rub_uci",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ruku_uci": {
+          "name": "ruku_uci",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "manzil_uci": {
+          "name": "manzil_uci",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "ayahs_juz_idx": {
+          "name": "ayahs_juz_idx",
+          "columns": [
+            {
+              "expression": "juz_uci",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "ayahs_hizb_idx": {
+          "name": "ayahs_hizb_idx",
+          "columns": [
+            {
+              "expression": "hizb_uci",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "ayahs_rub_idx": {
+          "name": "ayahs_rub_idx",
+          "columns": [
+            {
+              "expression": "rub_uci",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "ayahs_ruku_idx": {
+          "name": "ayahs_ruku_idx",
+          "columns": [
+            {
+              "expression": "ruku_uci",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "ayahs_manzil_idx": {
+          "name": "ayahs_manzil_idx",
+          "columns": [
+            {
+              "expression": "manzil_uci",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "ayahs_surah_uci_surahs_uci_fk": {
+          "name": "ayahs_surah_uci_surahs_uci_fk",
+          "tableFrom": "ayahs",
+          "tableTo": "surahs",
+          "columnsFrom": [
+            "surah_uci"
+          ],
+          "columnsTo": [
+            "uci"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "ayahs_juz_uci_juzs_uci_fk": {
+          "name": "ayahs_juz_uci_juzs_uci_fk",
+          "tableFrom": "ayahs",
+          "tableTo": "juzs",
+          "columnsFrom": [
+            "juz_uci"
+          ],
+          "columnsTo": [
+            "uci"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "ayahs_hizb_uci_hizbs_uci_fk": {
+          "name": "ayahs_hizb_uci_hizbs_uci_fk",
+          "tableFrom": "ayahs",
+          "tableTo": "hizbs",
+          "columnsFrom": [
+            "hizb_uci"
+          ],
+          "columnsTo": [
+            "uci"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "ayahs_rub_uci_rubs_uci_fk": {
+          "name": "ayahs_rub_uci_rubs_uci_fk",
+          "tableFrom": "ayahs",
+          "tableTo": "rubs",
+          "columnsFrom": [
+            "rub_uci"
+          ],
+          "columnsTo": [
+            "uci"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "ayahs_ruku_uci_rukus_uci_fk": {
+          "name": "ayahs_ruku_uci_rukus_uci_fk",
+          "tableFrom": "ayahs",
+          "tableTo": "rukus",
+          "columnsFrom": [
+            "ruku_uci"
+          ],
+          "columnsTo": [
+            "uci"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "ayahs_manzil_uci_manzils_uci_fk": {
+          "name": "ayahs_manzil_uci_manzils_uci_fk",
+          "tableFrom": "ayahs",
+          "tableTo": "manzils",
+          "columnsFrom": [
+            "manzil_uci"
+          ],
+          "columnsTo": [
+            "uci"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "ayahs_number_unique": {
+          "name": "ayahs_number_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "number"
+          ]
+        },
+        "ayahs_surah_position": {
+          "name": "ayahs_surah_position",
+          "nullsNotDistinct": false,
+          "columns": [
+            "surah_uci",
+            "number_in_surah"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {
+        "ayahs_uci_format": {
+          "name": "ayahs_uci_format",
+          "value": "\"ayahs\".\"uci\" = 'QA' || \"ayahs\".\"number\"::text"
+        },
+        "ayahs_number_range": {
+          "name": "ayahs_number_range",
+          "value": "\"ayahs\".\"number\" BETWEEN 1 AND 6236"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.hizbs": {
+      "name": "hizbs",
+      "schema": "",
+      "columns": {
+        "uci": {
+          "name": "uci",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "number": {
+          "name": "number",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "juz_uci": {
+          "name": "juz_uci",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "number_in_juz": {
+          "name": "number_in_juz",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "hizbs_juz_uci_juzs_uci_fk": {
+          "name": "hizbs_juz_uci_juzs_uci_fk",
+          "tableFrom": "hizbs",
+          "tableTo": "juzs",
+          "columnsFrom": [
+            "juz_uci"
+          ],
+          "columnsTo": [
+            "uci"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "hizbs_number_unique": {
+          "name": "hizbs_number_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "number"
+          ]
+        },
+        "hizbs_juz_position": {
+          "name": "hizbs_juz_position",
+          "nullsNotDistinct": false,
+          "columns": [
+            "juz_uci",
+            "number_in_juz"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {
+        "hizbs_uci_format": {
+          "name": "hizbs_uci_format",
+          "value": "\"hizbs\".\"uci\" = 'QH' || \"hizbs\".\"number\"::text"
+        },
+        "hizbs_number_range": {
+          "name": "hizbs_number_range",
+          "value": "\"hizbs\".\"number\" BETWEEN 1 AND 60"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.juzs": {
+      "name": "juzs",
+      "schema": "",
+      "columns": {
+        "uci": {
+          "name": "uci",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "number": {
+          "name": "number",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "start_ayah_number": {
+          "name": "start_ayah_number",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "end_ayah_number": {
+          "name": "end_ayah_number",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "juzs_number_unique": {
+          "name": "juzs_number_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "number"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {
+        "juzs_uci_format": {
+          "name": "juzs_uci_format",
+          "value": "\"juzs\".\"uci\" = 'QJ' || \"juzs\".\"number\"::text"
+        },
+        "juzs_number_range": {
+          "name": "juzs_number_range",
+          "value": "\"juzs\".\"number\" BETWEEN 1 AND 30"
+        },
+        "juzs_ayah_range": {
+          "name": "juzs_ayah_range",
+          "value": "\"juzs\".\"start_ayah_number\" <= \"juzs\".\"end_ayah_number\""
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.manzils": {
+      "name": "manzils",
+      "schema": "",
+      "columns": {
+        "uci": {
+          "name": "uci",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "number": {
+          "name": "number",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "start_surah_uci": {
+          "name": "start_surah_uci",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "end_surah_uci": {
+          "name": "end_surah_uci",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "manzils_start_surah_uci_surahs_uci_fk": {
+          "name": "manzils_start_surah_uci_surahs_uci_fk",
+          "tableFrom": "manzils",
+          "tableTo": "surahs",
+          "columnsFrom": [
+            "start_surah_uci"
+          ],
+          "columnsTo": [
+            "uci"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "manzils_end_surah_uci_surahs_uci_fk": {
+          "name": "manzils_end_surah_uci_surahs_uci_fk",
+          "tableFrom": "manzils",
+          "tableTo": "surahs",
+          "columnsFrom": [
+            "end_surah_uci"
+          ],
+          "columnsTo": [
+            "uci"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "manzils_number_unique": {
+          "name": "manzils_number_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "number"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {
+        "manzils_uci_format": {
+          "name": "manzils_uci_format",
+          "value": "\"manzils\".\"uci\" = 'QM' || \"manzils\".\"number\"::text"
+        },
+        "manzils_number_range": {
+          "name": "manzils_number_range",
+          "value": "\"manzils\".\"number\" BETWEEN 1 AND 7"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.rubs": {
+      "name": "rubs",
+      "schema": "",
+      "columns": {
+        "uci": {
+          "name": "uci",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "number": {
+          "name": "number",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "hizb_uci": {
+          "name": "hizb_uci",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "number_in_hizb": {
+          "name": "number_in_hizb",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "number_in_juz": {
+          "name": "number_in_juz",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "start_ayah_number": {
+          "name": "start_ayah_number",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "end_ayah_number": {
+          "name": "end_ayah_number",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "rubs_hizb_uci_hizbs_uci_fk": {
+          "name": "rubs_hizb_uci_hizbs_uci_fk",
+          "tableFrom": "rubs",
+          "tableTo": "hizbs",
+          "columnsFrom": [
+            "hizb_uci"
+          ],
+          "columnsTo": [
+            "uci"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "rubs_number_unique": {
+          "name": "rubs_number_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "number"
+          ]
+        },
+        "rubs_hizb_position": {
+          "name": "rubs_hizb_position",
+          "nullsNotDistinct": false,
+          "columns": [
+            "hizb_uci",
+            "number_in_hizb"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {
+        "rubs_uci_format": {
+          "name": "rubs_uci_format",
+          "value": "\"rubs\".\"uci\" = 'QR' || \"rubs\".\"number\"::text"
+        },
+        "rubs_number_range": {
+          "name": "rubs_number_range",
+          "value": "\"rubs\".\"number\" BETWEEN 1 AND 240"
+        },
+        "rubs_ayah_range": {
+          "name": "rubs_ayah_range",
+          "value": "\"rubs\".\"start_ayah_number\" <= \"rubs\".\"end_ayah_number\""
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.rukus": {
+      "name": "rukus",
+      "schema": "",
+      "columns": {
+        "uci": {
+          "name": "uci",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "number": {
+          "name": "number",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "surah_uci": {
+          "name": "surah_uci",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "number_in_surah": {
+          "name": "number_in_surah",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "juz_uci": {
+          "name": "juz_uci",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "number_in_juz": {
+          "name": "number_in_juz",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "start_ayah_number": {
+          "name": "start_ayah_number",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "end_ayah_number": {
+          "name": "end_ayah_number",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ayah_count": {
+          "name": "ayah_count",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "rukus_surah_uci_surahs_uci_fk": {
+          "name": "rukus_surah_uci_surahs_uci_fk",
+          "tableFrom": "rukus",
+          "tableTo": "surahs",
+          "columnsFrom": [
+            "surah_uci"
+          ],
+          "columnsTo": [
+            "uci"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "rukus_juz_uci_juzs_uci_fk": {
+          "name": "rukus_juz_uci_juzs_uci_fk",
+          "tableFrom": "rukus",
+          "tableTo": "juzs",
+          "columnsFrom": [
+            "juz_uci"
+          ],
+          "columnsTo": [
+            "uci"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "rukus_number_unique": {
+          "name": "rukus_number_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "number"
+          ]
+        },
+        "rukus_surah_position": {
+          "name": "rukus_surah_position",
+          "nullsNotDistinct": false,
+          "columns": [
+            "surah_uci",
+            "number_in_surah"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {
+        "rukus_uci_format": {
+          "name": "rukus_uci_format",
+          "value": "\"rukus\".\"uci\" = 'QK' || \"rukus\".\"number\"::text"
+        },
+        "rukus_number_range": {
+          "name": "rukus_number_range",
+          "value": "\"rukus\".\"number\" BETWEEN 1 AND 556"
+        },
+        "rukus_ayah_range": {
+          "name": "rukus_ayah_range",
+          "value": "\"rukus\".\"start_ayah_number\" <= \"rukus\".\"end_ayah_number\""
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.ayah_texts": {
+      "name": "ayah_texts",
+      "schema": "",
+      "columns": {
+        "uci": {
+          "name": "uci",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "ayah_uci": {
+          "name": "ayah_uci",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "edition_uci": {
+          "name": "edition_uci",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "text": {
+          "name": "text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "bismillah": {
+          "name": "bismillah",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "ayah_texts_ayah_uci_ayahs_uci_fk": {
+          "name": "ayah_texts_ayah_uci_ayahs_uci_fk",
+          "tableFrom": "ayah_texts",
+          "tableTo": "ayahs",
+          "columnsFrom": [
+            "ayah_uci"
+          ],
+          "columnsTo": [
+            "uci"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "ayah_texts_edition_uci_editions_uci_fk": {
+          "name": "ayah_texts_edition_uci_editions_uci_fk",
+          "tableFrom": "ayah_texts",
+          "tableTo": "editions",
+          "columnsFrom": [
+            "edition_uci"
+          ],
+          "columnsTo": [
+            "uci"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "ayah_texts_ayah_edition": {
+          "name": "ayah_texts_ayah_edition",
+          "nullsNotDistinct": false,
+          "columns": [
+            "ayah_uci",
+            "edition_uci"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {
+        "ayah_texts_uci_format": {
+          "name": "ayah_texts_uci_format",
+          "value": "\"ayah_texts\".\"uci\" = 'QT' || substring(\"ayah_texts\".\"edition_uci\" from 3) || lpad(substring(\"ayah_texts\".\"ayah_uci\" from 3), 4, '0')"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.editions": {
+      "name": "editions",
+      "schema": "",
+      "columns": {
+        "uci": {
+          "name": "uci",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "number": {
+          "name": "number",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "slug": {
+          "name": "slug",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "language": {
+          "name": "language",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "type": {
+          "name": "type",
+          "type": "edition_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "editions_number_unique": {
+          "name": "editions_number_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "number"
+          ]
+        },
+        "editions_slug_unique": {
+          "name": "editions_slug_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "slug"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {
+        "editions_uci_format": {
+          "name": "editions_uci_format",
+          "value": "\"editions\".\"uci\" = 'QE' || \"editions\".\"number\"::text"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.surahs": {
+      "name": "surahs",
+      "schema": "",
+      "columns": {
+        "uci": {
+          "name": "uci",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "number": {
+          "name": "number",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name_arabic": {
+          "name": "name_arabic",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name_english": {
+          "name": "name_english",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "revelation_place": {
+          "name": "revelation_place",
+          "type": "revelation_place",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "revelation_order": {
+          "name": "revelation_order",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ayah_count": {
+          "name": "ayah_count",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ruku_count": {
+          "name": "ruku_count",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "bismillah_prefix": {
+          "name": "bismillah_prefix",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "surahs_number_unique": {
+          "name": "surahs_number_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "number"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {
+        "surahs_uci_format": {
+          "name": "surahs_uci_format",
+          "value": "\"surahs\".\"uci\" = 'QS' || \"surahs\".\"number\"::text"
+        },
+        "surahs_number_range": {
+          "name": "surahs_number_range",
+          "value": "\"surahs\".\"number\" BETWEEN 1 AND 114"
+        }
+      },
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {
+    "public.edition_type": {
+      "name": "edition_type",
+      "schema": "public",
+      "values": [
+        "original",
+        "translation",
+        "transliteration"
+      ]
+    },
+    "public.revelation_place": {
+      "name": "revelation_place",
+      "schema": "public",
+      "values": [
+        "meccan",
+        "medinan"
+      ]
+    },
+    "public.sajda_type": {
+      "name": "sajda_type",
+      "schema": "public",
+      "values": [
+        "recommended",
+        "obligatory"
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

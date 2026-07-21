@@ -1,0 +1,9 @@
+packages:
+  - backend
+  - frontend
+onlyBuiltDependencies:
+  - esbuild
+  - '@tailwindcss/oxide'
+  - sharp
+  - unrs-resolver
+  - '@parcel/watcher'

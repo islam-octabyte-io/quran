@@ -1,0 +1,28 @@
+# dependencies
+/node_modules
+
+# build output
+/dist
+*.tsbuildinfo
+
+# env
+.env
+.env.local
+.env.*.local
+
+# logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# claude code session artifacts
+.claude/worktrees/
+
+# editor / OS
+.DS_Store
+.idea
+*.swp
+
+# drizzle
+/drizzle/meta/_journal.bak
+
